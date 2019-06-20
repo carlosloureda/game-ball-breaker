@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public static int breakableCount = 0;
     public Sprite[] hitSprites;
     private int timesHit;
     private int maxHits;
     private LevelManager levelManager;
+
+    private bool isBreakable;
     // Start is called before the first frame update
     void Start()
     {
+        this.isBreakable = (this.tag == "Breakable");
+        if (isBreakable)
+        {
+            breakableCount++;
+        }
         timesHit = 0;
         this.LinkPrefabs();
         this.maxHits = this.hitSprites.Length + 1;
@@ -41,7 +49,12 @@ public class Brick : MonoBehaviour
     {
 
         this.timesHit++;
-        if (this.timesHit >= this.maxHits) Destroy(gameObject);
+        if (this.timesHit >= this.maxHits)
+        {
+            breakableCount--;
+            levelManager.BrickDestroyed(); //handle level change
+            Destroy(gameObject);
+        }
         else
         {
             this.LoadSprites();
