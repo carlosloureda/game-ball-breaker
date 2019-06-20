@@ -31,19 +31,18 @@ public class Brick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        this.countBrickHits();
-        this.SimulateWin();
-        // this.checkForBrickDeath();
+        this.BrickHit();
+        // this.checkForWin();
     }
-    private void countBrickHits()
+    private void BrickHit()
     {
         this.timesHit++;
+        if (this.timesHit >= this.maxHits) Destroy(gameObject);
     }
 
-    // TODO: remove when win is available
-    private void SimulateWin()
-    {
-        levelManager.LoadNextLevel();
-    }
+    // private void checkForWin()
+    // {
+    //     levelManager.LoadNextLevel();
+    // }
 
 }
