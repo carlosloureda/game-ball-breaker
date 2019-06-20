@@ -123,3 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSprites:
   - {fileID: 1329915113816845207, guid: ae3e326d2fd3a99bbac442ed04f62dea, type: 3}
+  crack: {fileID: 8300000, guid: 62ce2557168fe4cd88680f364b3bcf95, type: 3}

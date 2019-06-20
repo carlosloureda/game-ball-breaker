@@ -6,6 +6,8 @@ public class Brick : MonoBehaviour
 {
     public static int breakableCount = 0;
     public Sprite[] hitSprites;
+
+    public AudioClip crack;
     private int timesHit;
     private int maxHits;
     private LevelManager levelManager;
@@ -41,17 +43,22 @@ public class Brick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        bool isBreakable = this.tag == "Breakable";
-        if (isBreakable) this.HandleBrickHit();
+
+        if (this.isBreakable) this.HandleBrickHit();
         // this.checkForWin();
+    }
+    public bool IsFinalHit()
+    {
+        return this.timesHit >= this.maxHits;
     }
     private void HandleBrickHit()
     {
 
         this.timesHit++;
-        if (this.timesHit >= this.maxHits)
+        if (this.IsFinalHit())
         {
             breakableCount--;
+            AudioSource.PlayClipAtPoint(crack, transform.position);
             levelManager.BrickDestroyed(); //handle level change
             Destroy(gameObject);
         }

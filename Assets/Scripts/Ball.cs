@@ -38,10 +38,22 @@ public class Ball : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (this.gameHasStarted)
+        {
+
+            bool isFinalHit = other.gameObject.tag == "Breakable" && other.gameObject.GetComponent<Brick>().IsFinalHit();            // Debug.Log("script: ", script);
+            if (!isFinalHit)
+                GetComponent<AudioSource>().Play();
+
+        }
+    }
+
     /**
     * We can link prefabs with FindObjectOfType programatically as Unity doesn't
     * let us use nested prefabs (but we want them)
-    */
+*/
     private void LinkPaddleToBall()
     {
         this.paddle = GameObject.FindObjectOfType<Paddle>();
