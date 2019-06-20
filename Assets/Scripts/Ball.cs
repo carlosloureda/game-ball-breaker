@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public Paddle paddle;
+    /**
+    * We create it private to be linked with FindObjectOfType so we can link prefabs
+    * programatically as Unity doesn't let us use nested prefabs (but we want them)
+    * See: MakeBallStayOverPaddle
+    */
+    private Paddle paddle;
 
     /**
     * The 'y' distance from the ball and the paddle. It is used at start, so
@@ -19,6 +24,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.LinkPaddleToBall();
         this.paddleToBallVector = this.transform.position - paddle.transform.position;
     }
 
@@ -30,6 +36,15 @@ public class Ball : MonoBehaviour
             this.MakeBallStayOverPaddle();
             this.ListenForMousePressToLanchBall();
         }
+    }
+
+    /**
+    * We can link prefabs with FindObjectOfType programatically as Unity doesn't
+    * let us use nested prefabs (but we want them)
+    */
+    private void LinkPaddleToBall()
+    {
+        this.paddle = GameObject.FindObjectOfType<Paddle>();
     }
 
     private void MakeBallStayOverPaddle()
