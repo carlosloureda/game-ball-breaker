@@ -125,3 +125,4 @@ MonoBehaviour:
   - {fileID: 1329915113816845207, guid: ae3e326d2fd3a99bbac442ed04f62dea, type: 3}
   - {fileID: -3185777907216620351, guid: ae3e326d2fd3a99bbac442ed04f62dea, type: 3}
   crack: {fileID: 8300000, guid: 62ce2557168fe4cd88680f364b3bcf95, type: 3}
+  smoke: {fileID: 289042366033650335, guid: c450473d3404385258bb3ead05e71a41, type: 3}
