@@ -72,10 +72,14 @@ public class Brick : MonoBehaviour
         int spriteIndex = this.timesHit - 1;
         /* sometimes if fails to load and loads an empty sprite with colliders,
         so we make sure this dosen't happen */
-        if (this.hitSprites[spriteIndex])
+        if (this.hitSprites[spriteIndex] != null)
         {
             this.GetComponent<SpriteRenderer>().sprite = this.hitSprites[spriteIndex];
 
+        }
+        else
+        {
+            Debug.LogError(("Brick sprite missing"));
         }
 
     }
