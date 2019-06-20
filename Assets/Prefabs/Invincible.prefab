@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7015855564601118724}
   - component: {fileID: 3434238402513268401}
   m_Layer: 0
-  m_Name: 1 hit
+  m_Name: Invincible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7580394105010664705, guid: ae3e326d2fd3a99bbac442ed04f62dea,
     type: 3}
-  m_Color: {r: 0.990566, g: 0.95649916, b: 0.107467085, a: 1}
+  m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41fdf0323416afe709cc73e7367b6968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHits: 1
+  hitSprites: []

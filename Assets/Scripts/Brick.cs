@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    public int maxHits;
     public Sprite[] hitSprites;
     private int timesHit;
+    private int maxHits;
     private LevelManager levelManager;
     // Start is called before the first frame update
     void Start()
     {
         timesHit = 0;
         this.LinkPrefabs();
+        this.maxHits = this.hitSprites.Length + 1;
     }
 
     // Update is called once per frame
@@ -32,11 +33,13 @@ public class Brick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        this.BrickHit();
+        bool isBreakable = this.tag == "Breakable";
+        if (isBreakable) this.HandleBrickHit();
         // this.checkForWin();
     }
-    private void BrickHit()
+    private void HandleBrickHit()
     {
+
         this.timesHit++;
         if (this.timesHit >= this.maxHits) Destroy(gameObject);
         else
@@ -47,7 +50,13 @@ public class Brick : MonoBehaviour
     private void LoadSprites()
     {
         int spriteIndex = this.timesHit - 1;
-        this.GetComponent<SpriteRenderer>().sprite = this.hitSprites[spriteIndex];
+        /* sometimes if fails to load and loads an empty sprite with colliders,
+        so we make sure this dosen't happen */
+        if (this.hitSprites[spriteIndex])
+        {
+            this.GetComponent<SpriteRenderer>().sprite = this.hitSprites[spriteIndex];
+
+        }
 
     }
 
