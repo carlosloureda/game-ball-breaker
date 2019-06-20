@@ -122,3 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHits: 2
+  hitSprites:
+  - {fileID: 1329915113816845207, guid: ae3e326d2fd3a99bbac442ed04f62dea, type: 3}

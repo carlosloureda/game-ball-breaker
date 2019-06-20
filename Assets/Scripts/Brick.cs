@@ -5,6 +5,7 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     public int maxHits;
+    public Sprite[] hitSprites;
     private int timesHit;
     private LevelManager levelManager;
     // Start is called before the first frame update
@@ -38,6 +39,16 @@ public class Brick : MonoBehaviour
     {
         this.timesHit++;
         if (this.timesHit >= this.maxHits) Destroy(gameObject);
+        else
+        {
+            this.LoadSprites();
+        }
+    }
+    private void LoadSprites()
+    {
+        int spriteIndex = this.timesHit - 1;
+        this.GetComponent<SpriteRenderer>().sprite = this.hitSprites[spriteIndex];
+
     }
 
     // private void checkForWin()
