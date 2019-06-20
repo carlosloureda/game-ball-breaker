@@ -16,7 +16,7 @@ public class LoseCollider : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        this.levelManager.LoadLevel("GameOver");
+        this.levelManager.LoadLevel("LoseScreen");
     }
     /**
     * We can link prefabs with FindObjectOfType programatically as Unity doesn't
